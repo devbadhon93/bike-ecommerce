@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undefined | Bicycles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+        /* Base Styles */
+        :root {
+            --primary-color: #2a2a2a;
+            --secondary-color: #f8f8f8;
+            --accent-color: #4CAF50;
+            --text-color: #333;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .header-actions a {
+            margin-left: 20px;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            margin-top: 50px;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-gray);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Video Section */
+        .video-section {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .play-button i {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-left: 5px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 0;
+            background-color: var(--secondary-color);
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            border: 1px solid var(--light-gray);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-gray);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 4px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+        }
+
+        .testimonial-rating {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background-image: url('img/slider/1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 80px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            border: 1px solid var(--light-gray);
+            overflow: hidden;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-gray);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            color: var(--accent-color);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 18px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .features-grid, .products-grid, .testimonial-grid, .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .features-grid, .products-grid, .testimonial-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div>
+                    <i class="fas fa-phone-alt"></i> (00) 123 456 789 | <i class="fas fa-envelope"></i> info@undefined.com
+                </div>
+                <div>
+                    <i class="fas fa-truck"></i> Free Shipping on All Orders Over $99
+                </div>
+            </div>
+        </div>
+        <div class="header-main container">
+            <div class="logo">undefined</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Bikes</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Parts</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>On-Road. Off-Road. Any Road.</h1>
+                <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages. Visit our shop to see more bikes.</p>
+                <a href="#" class="btn">Shop Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/800x400" alt="Bicycle">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Trust Our 20 Years Of Experience And Passion</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <i class="fas fa-bicycle fa-3x"></i>
+                    </div>
+                    <h3>Mountain & Road Bikes</h3>
+                    <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <i class="fas fa-cog fa-3x"></i>
+                    </div>
+                    <h3>Professional Assembly</h3>
+                    <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <i class="fas fa-wrench fa-3x"></i>
+                    </div>
+                    <h3>24/7 Bike Repairs Works</h3>
+                    <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                </div>
+            </div>
+            <div class="video-section">
+                <div class="video-container">
+                    <img src="https://via.placeholder.com/1200x600" alt="Video thumbnail">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h2>Bicycles Are Our Works. But Also Our Passion.</h2>
+                <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages. Visit our shop to see more bikes.</p>
+                <a href="#" class="btn">Shop Now</a>
+            </div>
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Local Services & Support</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Bike Repairs Works</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Mountain Bike">
+                    </div>
+                    <div class="product-name">Mountainer CX20 FX</div>
+                    <div class="product-price">$1,299.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Road Bike">
+                    </div>
+                    <div class="product-name">Laundress E-Zony AM</div>
+                    <div class="product-price">$1,199.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="City Bike">
+                    </div>
+                    <div class="product-name">Canyon Carbon S1.0</div>
+                    <div class="product-price">$1,099.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Mountain Bike">
+                    </div>
+                    <div class="product-name">Saddla Evo Brompton</div>
+                    <div class="product-price">$999.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Road Bike">
+                    </div>
+                    <div class="product-name">Laundress Hybrid 1.0</div>
+                    <div class="product-price">$899.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="City Bike">
+                    </div>
+                    <div class="product-name">Saddla Evo Monster</div>
+                    <div class="product-price">$799.00</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">See What They Said About Us</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I bought a bike from this shop and I'm very happy with it. The staff was very helpful and the bike is great!"</p>
+                    <div class="testimonial-author">Robert Smith, Customer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"The service was excellent and the bike I bought is perfect for my needs. I highly recommend this shop!"</p>
+                    <div class="testimonial-author">Emily Johnson, Customer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Great selection of bikes and accessories. The staff is knowledgeable and helpful. Will definitely come back!"</p>
+                    <div class="testimonial-author">Michael Brown, Customer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Get In Touch With Our Online Community</h2>
+                <p>Join our mailing list to receive updates on new arrivals, special offers and other discount information.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/400x300" alt="News image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">June 10, 2023</div>
+                        <h3 class="news-title">12 Things You Should Know About Bicycles</h3>
+                        <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/400x300" alt="News image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">May 28, 2023</div>
+                        <h3 class="news-title">How Much Protein Do Cyclists Need?</h3>
+                        <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/400x300" alt="News image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">May 15, 2023</div>
+                        <h3 class="news-title">The Best Road Cycle Under $1000</h3>
+                        <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">undefined</div>
+                    <p>We have over 20 years experience in bicycle industry. We sell bicycles of all types and for all ages.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">Bikes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Parts</a></li>
+                        <li><a href="#">Clothing</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 undefined. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
